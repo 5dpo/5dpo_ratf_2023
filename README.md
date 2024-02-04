@@ -15,6 +15,52 @@ Finally, the launch file system implemented is bsed on the
 you to have different configurations implemented and selecting just one based on
 your environment variables.
 
+## Hardware
+
+- Mechanics:
+  - 60mm Aluminum Mecanum Wheels Set (2x left + 2x right, 45° rotational axis)
+    ([shop](https://eu.robotshop.com/products/60mm-mecanum-wheel-set-2x-left-2x-right))
+  - Metal DC Geared Motor w/Encoder - 12V 251RPM 18Kg.cm (DFRobot)
+    ([shop-1](https://eu.robotshop.com/products/12v-dc-motor-251rpm-encoder),
+    [shop-2](https://www.dfrobot.com/product-634.html))
+- Computing Units:
+  - Arduino Mega 2560 Rev3
+    ([shop](https://store.arduino.cc/products/arduino-mega-2560-rev3))
+  - Raspberry Pi 4B 4GB
+    ([shop-1](https://mauser.pt/catalog/product_info.php?products_id=096-7402),
+    [shop-2](https://pt.farnell.com/raspberry-pi/rpi4-modbp-4gb/raspberry-pi-4-model-b-4gb/dp/3051887),
+    [shop-3](https://pt.mouser.com/ProductDetail/Raspberry-Pi/SC01949?qs=T%252BzbugeAwjjISb%252BwlagpRw%3D%3D),
+    [shop-4](https://www.digikey.pt/en/products/detail/raspberry-pi/SC0194-9/10258781?s=N4IgTCBcDaIIwDYCcAGAtAJQIIGUAKAQgKIYYCaeAkgCwED01A4gWgHIAiIAugL5A))
+- Electronics:
+  - DC-DC Buck Converter 300W 6-40V to 1.2-36V 20A Step Dowm
+    ([shop](https://www.amazon.com/DIANN-300W-DC-DC-Buck-Converter/dp/B0B4CZ6GRV))
+  - Grove Electromagnet
+    ([shop](https://eu.robotshop.com/products/grove-electromagnet))
+  - LiPo Battery 11.1V 3S
+    - Gens ace 5000mAh 11.1V 3S1P 60C Lipo Battery Pack with XT90 Plug Bashing
+      Series
+      ([shop](https://www.gensace.de/gens-ace-5000mah-11-1v-3s1p-60c-lipo-battery-pack-with-xt-90-plug-bashing-series.html))
+    - Tattu 11.1V 15C 3S 10000mAh Lipo Battery Pack
+      ([shop](https://www.gensace.de/tattu-11-1v-15c-3s-10000mah-lipo-battery-pack.html))
+  - Micro Switch with Roller Lever Arm
+    ([shop](https://mauser.pt/catalog/product_info.php?products_id=010-1473))
+  - Power ON/OFF Switch
+    ([shop](https://mauser.pt/catalog/product_info.php?products_id=010-0626))
+- Sensors:
+  - 10 DoF Inertial Measurement Unit (IMU)
+    ([shop](https://www.waveshare.com/10-dof-imu-sensor-b.htm))
+  - Raspberry Pi Camera Board v2.1 (8MP, 1080p)
+    ([shop-1](https://mauser.pt/catalog/product_info.php?products_id=096-4061),
+    [shop-2](https://pt.farnell.com/raspberry-pi/rpi-8mp-camera-board/raspberry-pi-camera-board-v2/dp/2510728),
+    [shop-3](https://pt.mouser.com/ProductDetail/Raspberry-Pi/SC0023?qs=T%252BzbugeAwjgRU4vb4%252BbLIg%3D%3D),
+    [shop-4](https://www.digikey.pt/en/products/detail/raspberry-pi/SC0023/6152810?s=N4IgTCBcDaIIwDYCcAGAtHFc5oHIBEQBdAXyA))
+  - YDLIDAR X4 360° Laser Scanner
+    ([shop](https://eu.robotshop.com/products/ydlidar-x4-360-laser-scanner))
+
+## Firmware
+
+
+
 ## ROS
 
 **Current version**
