@@ -137,6 +137,31 @@ your environment variables.
     - [sdpo_ratf_ros_localization](/localization/5dpo_ratf_ros_localization/)
   - Navigation
     - [sdpo_ratf_ros_path_planning](/navigation/5dpo_ratf_ros_path_planning/)
+- `ratf2023_imu_test` **(specific to Raspberry Pi!)**
+  - Drivers
+    - [imu_filter_madgwick](/drivers/imu_tools/imu_filter_madgwick/)
+    - [MPU9255_node](/drivers/MPU9255_for_5dpo/)
+    - [sdpo_ratf_ros_driver](/drivers/5dpo_ratf_ros_driver/)
+    - [sdpo_driver_omnijoy](/drivers/5dpo_driver_omnijoy/)
+    - [sdpo_driver_laser_2d](/drivers/5dpo_driver_laser_2d/)
+  - Human-Machine Interface (HMI)
+    - rviz
+  - Localization
+    - [robot_pose_ekf](/localization/robot_pose_ekf/)
+    - [sdpo_ros_odom](/localization/5dpo_ros_odom/)
+    - [sdpo_ratf_ros_localization](/localization/5dpo_ratf_ros_localization/)
+  - Navigation
+    - [sdpo_ratf_ros_path_planning](/navigation/5dpo_ratf_ros_path_planning/)
+  - You may need to either clone the source of additional dependencies or
+    installing the following nodes:
+    ```sh
+    sudo apt install ros-noetic-robot-pose-ekf
+    sudo apt install ros-noetic-imu-complementary-filter
+    ```
+    - **Note:** if you do not want to use the IMU, please add a `CATKIN_IGNORE`
+      file inside each of the IMU-specific nodes. Also, given that the MPU node
+      requires a specific library of Raspberry Pi for communication with the
+      IMU, the code will not compile in your x86 system.
 
 **Usage**
 
