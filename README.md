@@ -59,7 +59,32 @@ your environment variables.
 
 ## Firmware
 
+- Arduino Mega 2560 Rev3 ([doc](https://docs.arduino.cc/hardware/mega-2560/))
+- PlatformIO ([url](https://platformio.org/),
+  [vscode](https://marketplace.visualstudio.com/items?itemName=platformio.platformio-ide),
+  [clion](https://plugins.jetbrains.com/plugin/13922-platformio-for-clion))
+  - Pre-requisite:
+    ```sh
+    sudo apt install python3-venv
+    ```
+  - Setup udev rules
+    ([source](https://docs.platformio.org/en/stable/core/installation/udev-rules.html)):
+    ```sh
+    curl -fsSL https://raw.githubusercontent.com/platformio/platformio-core/develop/platformio/assets/system/99-platformio-udev.rules | sudo tee /etc/udev/rules.d/99-platformio-udev.rules
 
+    sudo service udev restart
+    sudo usermod -a -G dialout $USER
+    sudo usermod -a -G plugdev $USER
+    ```
+  - If you want to define a fixed name to the serial port connection, add the
+    following lines to a file `/etc/udev/rules.d/99-usb-serial.rule`
+    ([source](https://roboticsknowledgebase.com/wiki/tools/udev-rules/)):
+    ```conf
+    SUBSYSTEM=="tty", ATTRS{idVendor}=="2341", ATTRS{idProduct}=="0042", SYMLINK+="ttyArduinoMega"
+    ```
+    - _Note:_ this approach creates a symbolic link, but the original device
+      still appears in the `/dev/` folder
+- Implementation: [5dpo_ratf_firmware](/firmware/5dpo_ratf_firmware/)
 
 ## ROS
 
