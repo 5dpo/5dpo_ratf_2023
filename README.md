@@ -17,7 +17,7 @@ your environment variables.
 
 ## Hardware
 
-- Mechanics:
+- Mechanics (3D files to print are available in [cad](/cad/)):
   - 60mm Aluminum Mecanum Wheels Set (2x left + 2x right, 45° rotational axis)
     ([shop](https://eu.robotshop.com/products/60mm-mecanum-wheel-set-2x-left-2x-right))
   - Metal DC Geared Motor w/Encoder - 12V 251RPM 18Kg.cm (DFRobot)
