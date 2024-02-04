@@ -147,12 +147,64 @@ export ROBOT_ID=<id>                # (default: unnamed_robot)
 export ROBOT_CONF=<configuration>   # (default: basic)
 ```
 
+If you want to set up a persistent `ROBOT_ID` environment variable, add the
+following line to the file `/etc/environment`:
+
+```sh
+ROBOT_ID=<id>
+```
+
 ### Build
 
 ```sh
+mkdir ~/ros1_ws/src -p
+cd ~/ros1_ws/src
+
+git clone git@github.com:5dpo/5dpo_ratf_2023.git
+
+cd ../
+catkin_make --force-cmake -DCMAKE_BUILD_TYPE=Release
 ```
 
 ### Launch
 
 ```sh
+export ROBOT_CONF=<basic|ratf2023>
+roslaunch sdpo_ratf_ros_nav_conf wake_up_almighty_ratf.launch
 ```
+
+## License
+
+Distributed under the _MIT License_.
+See [LICENSE](/LICENSE) for more information.
+
+## References
+
+TBC.
+
+## Contacts
+
+- António Paulo Moreira ([github](https://github.com/apaulomoreira),
+  [mail](mailto:amoreira@fe.up.pt))
+- João G. Martins ([github](https://github.com/Joao-G-Martins),
+  [mail:student](mailto:up201806222@edu.fe.up.pt),
+  [mail:inesctec](mailto:joao.g.martins@inesctec.pt))
+- Ricardo B. Sousa ([github](https://github.com/sousarbarb/),
+  [gitlab](https://gitlab.inesctec.pt/ricardo.b.sousa),
+  [mail:inesctec](mailto:ricardo.b.sousa@inesctec.pt),
+  [mail:personal](mailto:sousa.ricardob@outlook.com),
+  [mail:student](mailto:up201503004@edu.fe.up.pt))
+
+Project Link:
+https://github.com/5dpo/5dpo_ratf_2023/.
+
+## Acknowledgements
+
+- [Faculty of Engineering, University of Porto (FEUP)](https://sigarra.up.pt/feup/en/)
+- [Electrical and Computers Engineering Department (DEEC) @ FEUP](https://sigarra.up.pt/feup/en/UNI_GERAL.UNIDADE_VIEW?pv_unidade=13)
+- [CRIIS - Centre for Robotics in Industry and Intelligent Systems](https://www.inesctec.pt/en/centres/criis/) from
+  [INESC TEC - Institute for Systems and Computer Engineering, Technology and Science](https://www.inesctec.pt/en/)
+
+## Funding
+
+TBC.
