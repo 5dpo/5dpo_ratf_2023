@@ -186,9 +186,24 @@ TBC.
 
 - António Paulo Moreira ([github](https://github.com/apaulomoreira),
   [mail](mailto:amoreira@fe.up.pt))
+- Cláudia Daniela Rocha ([github](https://github.com/rochaclaudia),
+  [mail](mailto:claudia.d.rocha@inesctec.pt))
 - João G. Martins ([github](https://github.com/Joao-G-Martins),
   [mail:student](mailto:up201806222@edu.fe.up.pt),
   [mail:inesctec](mailto:joao.g.martins@inesctec.pt))
+- João Pedro Costa ([github](https://github.com/costajoao1641),
+  [mail](mailto:up201806431@edu.fe.up.pt))
+- João Tomás Padrão ([github](https://github.com/JoaoP4dr4o),
+  [mail](mailto:up202108766@edu.fe.up.pt))
+- José Maria Sarmento ([github](https://github.com/JoseMQS),
+  [mail](mailto:jose.m.sarmento@inesctec.pt))
+- José Pedro Carvalho ([github](https://github.com/Jose-PCarvalho),
+  [mail](mailto:jpcarvalho@fe.up.pt))
+- Maria Silva Lopes ([github](https://github.com/mariaslopes),
+  [mail:student](mailto:up201806775@edu.fe.up.pt),
+  [mail:inesctec](mailto:maria.s.lopes@inesctec.pt))
+- Paulo José Gomes da Costa ([github](https://github.com/P33a),
+  [mail](mailto:paco@fe.up.pt))
 - Ricardo B. Sousa ([github](https://github.com/sousarbarb/),
   [gitlab](https://gitlab.inesctec.pt/ricardo.b.sousa),
   [mail:inesctec](mailto:ricardo.b.sousa@inesctec.pt),
