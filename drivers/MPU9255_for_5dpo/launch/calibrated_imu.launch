@@ -1,0 +1,7 @@
+<launch>
+
+	<rosparam command="load" file="$(find MPU9255)/calib_matrix/matrix_mag.yaml" />
+	<rosparam command="load" file="$(find MPU9255)/calib_matrix/matrix_acc.yaml" />
+	<node pkg="MPU9255" name="MPU9255_node" type="MPU9255_node"/>
+	
+</launch>

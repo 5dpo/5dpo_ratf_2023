@@ -4,6 +4,8 @@ odom_frame_id: $(arg robot_id)/odom
 publish_tf: true
 
 steering_geometry: "omni4"
+w_ref_max_enable: true
+w_ref_max: 15.0
 rob_dist_between_front_back_wh: 0.152
 rob_dist_between_left_right_wh: 0.193
 wh_front_left_diam: 0.060

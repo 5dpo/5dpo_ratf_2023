@@ -1,0 +1,28 @@
+<launch>
+
+  <arg name="robot_id" value="$(optenv ROBOT_ID unnamed_robot)"/>
+
+  <group ns="$(arg robot_id)">
+    <node pkg="sdpo_ros_odom" type="sdpo_ros_odom_wh_node"
+        name="sdpo_ros_odom" clear_params="true"
+        output="$(optenv ROBOT_OUTPUT screen)">
+      <param name="publish_tf" value="false"/>
+      <rosparam command="load" subst_value="True"
+          file="$(dirname)/sdpo_ros_odom.yaml"/>
+    </node>
+
+    <node pkg="robot_pose_ekf" type="robot_pose_ekf" name="robot_pose_ekf">
+    <param name="output_frame" value="$(arg robot_id)/odom"/>
+    <param name="base_footprint_frame" value="$(arg robot_id)/base_footprint"/>
+    <param name="freq" value="30.0"/>
+    <param name="sensor_timeout" value="1.0"/>  
+    <param name="odom_used" value="true"/>
+    <param name="imu_used" value="true"/>
+    <param name="vo_used" value="false"/>
+
+    <remap from="imu_data" to="imu/data" />
+    </node>
+  </group>
+
+</launch>
+

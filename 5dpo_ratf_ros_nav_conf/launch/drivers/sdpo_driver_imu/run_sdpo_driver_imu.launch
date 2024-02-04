@@ -1,0 +1,29 @@
+<launch>
+  <arg name="robot_id" value="$(optenv ROBOT_ID unnamed_robot)"/>
+
+  <group ns="$(arg robot_id)">
+	#### IMU Driver ###########################################################
+
+
+	<rosparam command="load" file="$(dirname)/calib_matrix/matrix_mag.yaml" />
+	<rosparam command="load" file="$(dirname)/calib_matrix/matrix_acc.yaml" />
+	<node pkg="MPU9255" name="MPU9255_node" type="MPU9255_node"/>
+	
+	
+
+	#### IMU filter ###########################################################
+	
+	<node pkg="nodelet" type="nodelet" name="imu_manager"
+	args="manager" output="screen" />
+	
+	<node pkg="nodelet" type="nodelet" name="ImuFilterNodelet"
+	args="load imu_filter_madgwick/ImuFilterNodelet imu_manager"
+	output="screen">
+
+	<param name="publish_tf" value="false"/>
+	<param name="use_mag" value="false"/>
+
+	</node>
+  </group>
+	
+</launch>

@@ -1,0 +1,7 @@
+<launch>
+  <arg name="rviz" value="$(dirname)/hmi/rviz"/>
+
+  <include file="$(dirname)/../../hmi/rviz/run_rviz.launch">
+    <arg name="rviz_directory" value="$(arg rviz)"/>
+  </include>
+</launch>

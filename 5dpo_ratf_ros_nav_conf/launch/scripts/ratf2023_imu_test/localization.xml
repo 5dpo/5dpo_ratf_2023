@@ -1,0 +1,6 @@
+<launch>
+  <include file="$(dirname)/../../localization/sdpo_ros_odom/run_sdpo_ros_imu_wheel_odom.launch"/>
+  <include file="$(dirname)/../../localization/sdpo_ratf_ros_localization/run_sdpo_ratf_ros_localization.launch"/>
+  <include file="$(dirname)/../../localization/sdpo_ratf_ros_path_planning/run_sdpo_ratf_ros_path_planning.launch"/>
+  <node pkg="tf" type="static_transform_publisher" name="link1_broadcaster" args="0 0 0 0 0 0 unnamed_robot/base_footprint imu_link 100" />
+</launch>

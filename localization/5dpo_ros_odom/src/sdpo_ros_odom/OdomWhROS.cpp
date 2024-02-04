@@ -20,6 +20,9 @@ OdomWhROS::OdomWhROS() {
     ros::shutdown();
   }
 
+  if (w_ref_max_enabled_) {
+    pub_cmd_vel_ref_ = nh.advertise<geometry_msgs::Twist>("cmd_vel_ref", 1);
+  }
   pub_mot_ref_ = nh.advertise<sdpo_ros_interfaces_hw::mot_ref>("motors_ref", 1);
   pub_odom_ = nh.advertise<nav_msgs::Odometry>("odom", 1);
   sub_mot_enc_ = nh.subscribe("motors_encoders", 1,
@@ -62,8 +65,38 @@ bool OdomWhROS::readParam() {
   ROS_INFO("[sdpo_ros_odom] Publish TF: %s",
            publish_tf_? "yes" : "no");
 
+
+  print_is_default_param_set("translation_covariance");
+  nh_private.param<float>("translation_covariance", translation_covariance_,
+                                0.0001);
+  ROS_INFO("[sdpo_ros_odom] Translation covariance: %f", translation_covariance_);
+  print_is_default_param_set("rotation_covariance");
+  nh_private.param<float>("rotation_covariance", rotation_covariance_,
+                                0.001);
+  ROS_INFO("[sdpo_ros_odom] Translation covariance: %f", rotation_covariance_);
+  
   nh_private.getParam("steering_geometry", steering_geometry_);
   ROS_INFO("[sdpo_ros_odom] Steering geometry: %s", steering_geometry_.c_str());
+
+  print_is_default_param_set("w_ref_max_enabled");
+  nh_private.param<bool>("w_ref_max_enabled", w_ref_max_enabled_, false);
+  ROS_INFO("[sdpo_ros_odom] Maximum angular speed enabled: %s",
+           w_ref_max_enabled_? "yes" : "no");
+
+  if (w_ref_max_enabled_) {
+    if (!nh_private.hasParam("w_ref_max")) {
+      throw std::runtime_error(
+          "[OdomWhROS.cpp] OdomWhROS::readParam: "
+          "if the maximum angular speed is enabled, the parameter w_ref_max "
+          "must be set");
+    }
+
+    nh_private.getParam("w_ref_max", w_ref_max_);
+    ROS_INFO("[sdpo_ros_odom] Maximum wheel angular speed: %lf (rad/s)",
+             w_ref_max_);
+  }
+
+  
 
   // Four-Wheeled Omnidirectional Robot
   if (steering_geometry_ == kOdomWhOmni4Str) {
@@ -300,6 +333,11 @@ bool OdomWhROS::readParam() {
         "invalid steering_geometry (check documentation for supported ones)");
   }
 
+  // Initialize wheel angular speed maximum limit
+  if (w_ref_max_enabled_) {
+    odom_->setMotorWRefMax(w_ref_max_enabled_, w_ref_max_);
+  }
+
   return true;
 };
 
@@ -345,6 +383,29 @@ void OdomWhROS::subMotEnc(const sdpo_ros_interfaces_hw::mot_enc_array& msg) {
     odom_msg.pose.pose.orientation.w = odom2base_tf.getRotation().w();
     odom_msg.twist.twist = odom_vel;
 
+    // translation in x,y,z
+    odom_msg.pose.covariance[0]  = translation_covariance_;//x
+    odom_msg.pose.covariance[7]  = translation_covariance_;//y
+    odom_msg.pose.covariance[14] = 1000;//z
+    // rotation in roll,pitch,yaw
+    odom_msg.pose.covariance[21] = 1000;//roll
+    odom_msg.pose.covariance[28] = 1000;//pitch
+    odom_msg.pose.covariance[35] = rotation_covariance_;//yaw
+    /*
+    //Covar_set
+    for(int i = 0; i<36; i++) {
+      if(i == 0 || i == 7 || i == 14) {
+        odom_msg.pose.covariance[i] = .01;
+      }
+      else if (i == 21 || i == 28 || i== 35) {
+        odom_msg.pose.covariance[i] += 0.1;
+      }
+      else {
+        odom_msg.pose.covariance[i] = 0;
+      }
+    }
+    */
+
     pub_odom_.publish(odom_msg);
 
   } catch (std::exception& e) {
@@ -363,6 +424,24 @@ void OdomWhROS::subCmdVel(const geometry_msgs::Twist& msg) {
   }
 
   pub_mot_ref_.publish(mot_ref_msg);
+  
+  if (odom_->w_r_max_enabled) {
+    pubCmdVelRef();
+  }
+}
+
+void OdomWhROS::pubCmdVelRef() {
+  geometry_msgs::Twist cmd_vel_ref;
+
+  cmd_vel_ref.linear.x = odom_->vel.v_r;
+  cmd_vel_ref.linear.y = odom_->vel.vn_r;
+  cmd_vel_ref.linear.z = 0;
+
+  cmd_vel_ref.angular.x = 0;
+  cmd_vel_ref.angular.y = 0;
+  cmd_vel_ref.angular.z = odom_->vel.w_r;
+
+  pub_cmd_vel_ref_.publish(cmd_vel_ref);
 }
 
 } // namespace sdpo_ros_odom
