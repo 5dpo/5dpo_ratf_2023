@@ -1,0 +1,7 @@
+.idea/
+.vs/
+.vscode/
+build/
+camke-build/
+out/
+output/
