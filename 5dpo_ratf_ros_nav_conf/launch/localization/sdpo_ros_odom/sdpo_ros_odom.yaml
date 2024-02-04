@@ -1,0 +1,20 @@
+base_frame_id: $(arg robot_id)/base_footprint
+odom_frame_id: $(arg robot_id)/odom
+
+publish_tf: true
+
+steering_geometry: "omni4"
+rob_dist_between_front_back_wh: 0.152
+rob_dist_between_left_right_wh: 0.193
+wh_front_left_diam: 0.060
+wh_front_left_idx: 3
+wh_front_left_inv: true
+wh_front_right_diam: 0.060
+wh_front_right_idx: 2
+wh_front_right_inv: true
+wh_back_left_diam: 0.060
+wh_back_left_idx: 1
+wh_back_left_inv: true
+wh_back_right_diam: 0.060
+wh_back_right_idx: 0
+wh_back_right_inv: true

@@ -1,0 +1,10 @@
+<launch>
+  <arg name="rviz_directory" default="$(dirname)"/>
+  <arg name="node_start_delay" default="2.0"/>
+
+  <node pkg="rviz" type="rviz" name="rviz"
+      args="-d $(arg rviz_directory)/rviz.rviz"
+      clear_params="true" output="$(optenv ROBOT_OUTPUT screen)"
+      launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@' ">
+  </node>
+</launch>

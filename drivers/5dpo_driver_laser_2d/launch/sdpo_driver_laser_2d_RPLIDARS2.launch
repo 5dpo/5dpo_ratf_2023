@@ -1,0 +1,12 @@
+<launch>
+  <arg name="robot_id" value="$(optenv ROBOT_ID unnamed_robot)"/>
+
+  <group ns="$(arg robot_id)">
+    <node pkg="sdpo_driver_laser_2d" type="sdpo_driver_laser_2d_node"
+        name="sdpo_driver_laser_2d" clear_params="true"
+        output="$(optenv ROBOT_OUTPUT screen)">
+      <rosparam command="load" subst_value="True"
+          file="$(find sdpo_driver_laser_2d)/config/sdpo_driver_laser_2d_RPLIDARS2.yaml"/>
+    </node>
+  </group>
+</launch>

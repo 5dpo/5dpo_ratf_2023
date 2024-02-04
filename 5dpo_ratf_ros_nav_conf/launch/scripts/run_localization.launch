@@ -1,0 +1,6 @@
+<launch>
+  <arg name="robot_id" value="$(optenv ROBOT_ID unnamed_robot)"/>
+  <arg name="conf" value="$(optenv ROBOT_CONF basic)"/>
+
+  <include file="$(dirname)/$(arg conf)/localization.xml"/>
+</launch>

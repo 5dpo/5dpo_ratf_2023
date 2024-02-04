@@ -1,0 +1,13 @@
+model: "ydlidarx4"
+serial_port_name: "/dev/ttyUSB0"
+baud_rate: 128000
+base_frame_id: $(arg robot_id)/base_footprint
+laser_frame_id: $(arg robot_id)/laser
+laser_pose_x: 0.07
+laser_pose_y: 0.0
+laser_pose_z: 0.0
+laser_pose_yaw: 172.0
+laser_pose_pitch: 0.0
+laser_pose_roll: 0.0
+dist_min: 0.12
+dist_max: 10.0

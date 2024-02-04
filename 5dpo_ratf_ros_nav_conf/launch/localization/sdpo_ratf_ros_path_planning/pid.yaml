@@ -1,0 +1,6 @@
+k_speed: 0.2
+k_correction: 0.6
+k_w: 5
+dist_tresh: 0.06
+box_dist: 0.05
+rotate_dist: 0.2

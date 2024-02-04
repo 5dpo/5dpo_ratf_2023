@@ -1,0 +1,5 @@
+<launch>
+  <include file="$(dirname)/../../localization/sdpo_ros_odom/run_sdpo_ros_odom_wh.launch"/>
+  <include file="$(dirname)/../../localization/sdpo_ratf_ros_localization/run_sdpo_ratf_ros_localization.launch"/>
+  <include file="$(dirname)/../../localization/sdpo_ratf_ros_path_planning/run_sdpo_ratf_ros_path_planning.launch"/>
+</launch>

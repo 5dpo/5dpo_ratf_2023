@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<launch>
+  <arg name="robot_id" value="$(optenv ROBOT_ID unnamed_robot)"/>
+
+  <group ns="$(arg robot_id)">
+    <node pkg="sdpo_driver_ros_camera" type="sdpo_driver_ros_camera_node"
+        name="sdpo_driver_ros_camera" clear_params="true" output="screen">
+      <param name="camera_params"
+          value="$(find sdpo_driver_ros_camera)/config/camera_data.yml"/>
+      <rosparam command="load" subst_value="True"
+          file="$(find sdpo_driver_ros_camera)/config/sdpo_driver_ros_camera.yaml"/>
+    </node>
+  </group>
+</launch>

@@ -1,0 +1,10 @@
+<launch>
+  <!-- Drivers Abstraction Layer -->
+  <include file="$(dirname)/run_drivers.launch"/>
+
+  <!-- Robot Localization Abstraction Layer -->
+  <include file="$(dirname)/run_localization.launch"/>
+
+  <!-- Human-Machine Interface (HMI) Abstraction Layer -->
+  <include file="$(dirname)/run_hmi.launch"/>
+</launch>

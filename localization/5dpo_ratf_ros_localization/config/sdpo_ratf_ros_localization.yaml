@@ -1,0 +1,27 @@
+map_frame_id: $(arg robot_id)/map
+odom_frame_id: $(arg robot_id)/odom
+base_frame_id: $(arg robot_id)/base_footprint
+laser_frame_id: $(arg robot_id)/laser
+
+beacons_diam: 0.09
+beacons_valid_dist: 0.20
+beacons: [ 0.898, 0.552,
+          -0.898, 0.552,
+           0.898,-0.552,
+          -0.898,-0.552 ]
+
+ekf_pose_ini_x: 0
+ekf_pose_ini_y: 0
+ekf_pose_ini_th: 0
+
+ekf_cov_ini_p_x: 0.1
+ekf_cov_ini_p_y: 0.1
+ekf_cov_ini_p_th: 0.1
+ekf_cov_q_d: 0.1
+ekf_cov_q_dn: 0.1
+ekf_cov_q_dth: 0.05
+ekf_cov_r_dist: 0.0001
+ekf_cov_r_ang: 0.001
+ekf_mode_ini: "Fusion"
+
+publish_pose: true

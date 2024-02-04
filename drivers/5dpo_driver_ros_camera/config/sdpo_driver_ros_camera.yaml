@@ -1,0 +1,10 @@
+debug: true
+publish_rate: 20
+base_frame_id: $(arg robot_id)/base_footprint
+camera_frame_id: $(arg robot_id)/camera
+camera_pose_x: 0.0
+camera_pose_y: 0.0
+camera_pose_z: 0.0
+camera_pose_yaw: 0.0
+camera_pose_pitch: 0.0
+camera_pose_roll: 0.0

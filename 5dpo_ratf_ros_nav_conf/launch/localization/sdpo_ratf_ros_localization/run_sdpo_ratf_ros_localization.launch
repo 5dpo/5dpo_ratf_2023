@@ -1,0 +1,13 @@
+<launch>
+  <arg name="robot_id" value="$(optenv ROBOT_ID unnamed_robot)"/>
+
+  <group ns="$(arg robot_id)">
+    <node pkg="sdpo_ratf_ros_localization" type="sdpo_ratf_ros_localization_node"
+        name="sdpo_ratf_ros_localization" clear_params="true"
+        output="$(optenv ROBOT_OUTPUT screen)"
+        launch-prefix="bash -c 'sleep 5.0; $0 $@' ">
+      <rosparam command="load" subst_value="True"
+          file="$(dirname)/sdpo_ratf_ros_localization.yaml"/>
+    </node>
+  </group>
+</launch>

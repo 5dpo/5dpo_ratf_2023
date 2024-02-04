@@ -1,0 +1,12 @@
+<launch>
+  <arg name="robot_id" value="$(optenv ROBOT_ID unnamed_robot)"/>
+
+  <group ns="$(arg robot_id)">
+    <node pkg="sdpo_ratf_ros_driver" type="sdpo_ratf_ros_driver_node"
+        name="sdpo_ratf_ros_driver" clear_params="true"
+        output="$(optenv ROBOT_OUTPUT screen)">
+      <rosparam command="load" subst_value="True"
+          file="$(find sdpo_ratf_ros_driver)/config/sdpo_ratf_ros_driver.yaml"/>
+    </node>
+  </group>
+</launch>

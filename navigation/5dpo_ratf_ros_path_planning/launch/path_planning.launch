@@ -1,0 +1,15 @@
+
+<launch>
+    <arg name="robot_id" default="unnamed_robot"/>
+
+    <group ns="$(arg robot_id)">
+        <node pkg="sdpo_ratf_ros_path_planning" name="path_planning" type="path_planning" output="screen">
+            <rosparam file="$(find sdpo_ratf_ros_path_planning)/config/map.yaml"
+                subst_value="True"/>
+            <rosparam file="$(find sdpo_ratf_ros_path_planning)/config/udp_server.yaml"
+                subst_value="True"/>
+                <rosparam file="$(find sdpo_ratf_ros_path_planning)/config/pid.yaml"
+                subst_value="True"/>
+        </node>
+    </group>
+</launch>
