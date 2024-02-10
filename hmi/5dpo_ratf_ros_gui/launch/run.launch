@@ -1,0 +1,11 @@
+<launch>
+    <rosparam file="$(find sdpo_ratf_ros_gui)/config/track.yaml" />
+
+    <node pkg="map_server" type="map_server" name="map_server"  output="screen" args="$(find sdpo_ratf_ros_gui)/config/map.yaml"> 
+    </node>
+
+    <node type="rviz" name="rviz" pkg="rviz" output="screen" args="-d $(find sdpo_ratf_ros_gui)/launch/configuration.rviz" />
+
+    <node pkg="sdpo_ratf_ros_gui" type="markers_node" name="markers_node" output="screen"/>
+
+</launch>

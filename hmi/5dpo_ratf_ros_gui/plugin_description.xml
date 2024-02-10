@@ -1,0 +1,8 @@
+<library path="lib/libratf_panel">
+  <class type="sdpo_ratf_ros_gui::ratfPanel"
+         base_class_type="rviz::Panel">
+    <description>
+      An RViz panel widget for RAF2023.
+    </description>
+  </class>
+</library>
