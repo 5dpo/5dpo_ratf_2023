@@ -1,0 +1,50 @@
+\begin{table}[t!]
+
+\centering
+\caption{Lookup Table of the Possible Values for the Previous ($k-1$) and Current ($k$) State on each Channel A and B, and the corresponding Increment on the Pulses Counters ($\Delta_k$).}
+\label{tab:fw:encoders}
+
+
+
+\begin{tabular}{c c | c c | c}
+
+%% HEADER
+\hline
+\textbf{$\text{A}_{k-1}$} &
+\textbf{$\text{B}_{k-1}$} &
+\textbf{$\text{A}_{k}$} &
+\textbf{$\text{B}_{k}$} &
+\textbf{$\Delta_{k}$}\\
+\hline
+
+
+
+%% TABLE CONTENTS
+0 & 0 & 0 & 0 &  0\\ % maintains state (stopped)
+0 & 0 & 0 & 1 & -1\\
+0 & 0 & 1 & 0 &  1\\
+0 & 0 & 1 & 1 &  0\\ % not valid state (skipped transition)
+\hline
+0 & 1 & 0 & 0 &  1\\
+0 & 1 & 0 & 1 &  0\\ % maintains state (stopped)
+0 & 1 & 1 & 0 &  0\\ % not valid state (skipped transition)
+0 & 1 & 1 & 1 & -1\\
+\hline
+1 & 0 & 0 & 0 & -1\\
+1 & 0 & 0 & 1 &  0\\ % not valid state (skipped transition)
+1 & 0 & 1 & 0 &  0\\ % maintains state (stopped)
+1 & 0 & 1 & 1 &  1\\
+\hline
+1 & 1 & 0 & 0 &  0\\ % not valid state (skipped transition)
+1 & 1 & 0 & 1 &  1\\
+1 & 1 & 1 & 0 & -1\\
+1 & 1 & 1 & 1 &  0\\ % maintains state (stopped)
+\hline
+
+
+
+\end{tabular}
+
+
+
+\end{table}
