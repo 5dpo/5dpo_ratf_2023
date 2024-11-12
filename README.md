@@ -203,9 +203,8 @@ roslaunch sdpo_ratf_ros_nav_conf wake_up_almighty_ratf.launch
 Distributed under the _MIT License_.
 See [LICENSE](/LICENSE) for more information.
 
-## ReferenceS
+## References
 If using this code for research purposes, please cite:
-The 5dpo Robot@Factory 4.0 Software Stack:
 ```bash
 @INPROCEEDINGS{5dpoRAF,
   author={Sousa, Ricardo B. and Rocha, Cláudia D. and Martins, João G. and Pedro Costa, João and Padrão, João Tomás and Sarmento, José Maria and Carvalho, José Pedro and Lopes, Maria S. and Costa, Paulo G. and Moreira, António Paulo},
