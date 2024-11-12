@@ -203,9 +203,20 @@ roslaunch sdpo_ratf_ros_nav_conf wake_up_almighty_ratf.launch
 Distributed under the _MIT License_.
 See [LICENSE](/LICENSE) for more information.
 
-## References
-
-TBC.
+## ReferenceS
+If using this code for research purposes, please cite:
+The 5dpo Robot@Factory 4.0 Software Stack:
+```bash
+@INPROCEEDINGS{5dpoRAF,
+  author={Sousa, Ricardo B. and Rocha, Cláudia D. and Martins, João G. and Pedro Costa, João and Padrão, João Tomás and Sarmento, José Maria and Carvalho, José Pedro and Lopes, Maria S. and Costa, Paulo G. and Moreira, António Paulo},
+  booktitle={2024 IEEE International Conference on Autonomous Robot Systems and Competitions (ICARSC)}, 
+  title={A Robotic Framework for the Robot@Factory 4.0 Competition}, 
+  year={2024},
+  volume={},
+  number={},
+  pages={66-73},
+  doi={10.1109/ICARSC61747.2024.10535935}}
+```
 
 ## Contacts
 
