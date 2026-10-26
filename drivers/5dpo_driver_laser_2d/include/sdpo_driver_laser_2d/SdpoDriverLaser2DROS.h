@@ -25,7 +25,7 @@ class SdpoDriverLaser2DROS {
       cfg_server_;
 
   std::unique_ptr<SdpoDriverLaser2D> laser_;
-
+  
   std::string model_;
   std::string serial_port_name_;
   int baud_rate_;

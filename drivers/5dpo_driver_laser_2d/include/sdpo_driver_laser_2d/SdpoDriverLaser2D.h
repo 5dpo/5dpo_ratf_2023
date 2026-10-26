@@ -41,6 +41,7 @@ class SdpoDriverLaser2D {
   SdpoDriverLaser2D();
   virtual ~SdpoDriverLaser2D() = default;
 
+  virtual bool initialize(const bool dbg = false);
   bool openSerial(const bool dbg = false);
   void closeSerial(const bool dbg = false);
   bool isSerialOpen();

@@ -1,0 +1,13 @@
+model: "ldlidar14p"
+serial_port_name: "/dev/ttyUSB0"
+baud_rate: 230400
+base_frame_id: $(arg robot_id)/base_footprint
+laser_frame_id: $(arg robot_id)/laser
+laser_pose_x: 0.0
+laser_pose_y: 0.0
+laser_pose_z: 0.0
+laser_pose_yaw: 0.0
+laser_pose_pitch: 0.0
+laser_pose_roll: 0.0
+dist_min: 0.02
+dist_max: 12.0

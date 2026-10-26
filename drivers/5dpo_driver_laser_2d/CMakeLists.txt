@@ -116,6 +116,7 @@ catkin_package(
   LIBRARIES
     ${PROJECT_NAME}_YDLIDARX4
     ${PROJECT_NAME}_RPLIDARS2
+    ${PROJECT_NAME}_LDLIDAR14P
   CATKIN_DEPENDS
     roscpp
     rospy
@@ -134,7 +135,15 @@ catkin_package(
 ## Your package locations should be listed before other locations
 include_directories(
   include
+  ${CMAKE_CURRENT_SOURCE_DIR}/third_party/ldlidar_sdk/include
   ${catkin_INCLUDE_DIRS}
+)
+add_subdirectory(third_party/ldlidar_sdk)
+target_include_directories(ldlidar_driver PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/third_party/ldlidar_sdk/include
+)
+set_target_properties(ldlidar_driver PROPERTIES
+        POSITION_INDEPENDENT_CODE ON
 )
 
 ## Declare a C++ library
@@ -152,6 +161,19 @@ add_library(${PROJECT_NAME}_RPLIDARS2
   src/${PROJECT_NAME}/SdpoDriverLaser2D.cpp
   src/${PROJECT_NAME}/RPLIDARS2.cpp
 )
+add_library(${PROJECT_NAME}_LDLIDAR14P
+        include/${PROJECT_NAME}/SdpoDriverLaser2D.h
+        include/${PROJECT_NAME}/LDLIDAR14P.h
+        include/${PROJECT_NAME}/utils.h
+        src/${PROJECT_NAME}/SdpoDriverLaser2D.cpp
+        src/${PROJECT_NAME}/LDLIDAR14P.cpp
+)
+target_link_libraries(${PROJECT_NAME}_LDLIDAR14P
+        PUBLIC
+        ldlidar_driver
+        pthread
+        ${catkin_LIBRARIES}
+)
 
 ## Add cmake target dependencies of the library
 ## as an example, code may need to be generated before libraries
@@ -166,6 +188,11 @@ add_dependencies(${PROJECT_NAME}_RPLIDARS2
   ${PROJECT_NAME}_gencfg
   ${catkin_EXPORTED_TARGETS}
 )
+add_dependencies(${PROJECT_NAME}_LDLIDAR14P
+        ${${PROJECT_NAME}_EXPORTED_TARGETS}
+        ${PROJECT_NAME}_gencfg
+        ${catkin_EXPORTED_TARGETS}
+)
 
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
@@ -174,6 +201,11 @@ add_executable(${PROJECT_NAME}_node
   ${PROGRAM_SOURCES}
   ${PROGRAM_HEADERS}
   src/main.cpp
+)
+
+# testing
+add_executable(test_ldlidar14p
+        src/test_ldlidar14p.cpp
 )
 
 ## Rename C++ executable without prefix
@@ -192,7 +224,15 @@ add_dependencies(${PROJECT_NAME}_node
 
 ## Specify libraries to link a library or executable target against
 target_link_libraries(${PROJECT_NAME}_node
+  pthread
+  ldlidar_driver
   ${catkin_LIBRARIES}
+)
+
+# testing
+target_link_libraries(test_ldlidar14p
+        sdpo_driver_laser_2d_LDLIDAR14P
+        ${catkin_LIBRARIES}
 )
 
 #############
